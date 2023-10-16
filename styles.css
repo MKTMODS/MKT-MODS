@@ -1,0 +1,269 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.header {
+    background-color: #4285f4;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.app-title {
+    font-size: 28px;
+    margin: 0;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.app-details {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+.extra-button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.extra-button:hover {
+    background-color: #2980b9;
+}
+.app-image-container {
+    flex: 100;
+    text-align: center;
+}
+
+.app-image {
+    max-width: 100%; /* Cambia esto a un valor específico en píxeles o porcentaje */
+    max-height: 100%; /* Cambia esto a un valor específico en píxeles o porcentaje */
+    display: block;
+    border: 2px solid #4285f4;
+    border-radius: 5px;
+}
+
+.app-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.app-description {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.system-requirements {
+    list-style: none;
+    padding: 0;
+}
+
+.system-requirements li {
+    margin-bottom: 10px;
+}
+
+.download-links {
+    margin-top: 20px;
+}
+
+.download-button {
+    display: block;
+    text-decoration: none;
+    background-color: #4285f4;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.download-button:hover {
+    background-color: #0c7cd5;
+}
+
+.screenshot-container {
+    text-align: center;
+}
+
+.screenshot {
+    max-width: 100%;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+/* Estilos para los requisitos del sistema */
+.system-requirements {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.requirement {
+    margin-bottom: 10px;
+}
+
+.requirement-box {
+    border: 2px solid #4285f4;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.requirement-title {
+    font-weight: bold;
+}
+
+.requirement-details {
+    margin-top: 5px;
+}
+/* Estilos para los botones de descarga */
+.download-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.download-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #4285f4;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin: 10px;
+}
+
+.download-button:hover {
+    background-color: #0c7cd5;
+}
+
+/* Estilos para la ventana emergente */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.join-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #4285f4;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+}
+
+/* Estilo para el contenedor principal */
+.contenedor {
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Estilo para el título */
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Estilo para los párrafos */
+p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los campos del formulario */
+.campo {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+/* Estilo para las etiquetas de los campos */
+label {
+    font-size: 18px;
+    color: #0088CC;
+    display: block;
+}
+
+/* Estilo para los campos de entrada de texto */
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo para el botón del formulario */
+button {
+    background: #0088CC;
+    color: #FFF;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}

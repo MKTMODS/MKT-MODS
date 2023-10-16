@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MKT MODS - Tu Fuente para Aplicaciones y Juegos</title>
+    <style>
+        /* Estilos CSS aquí */
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /* Estilos para el menú de selección (Juegos / Aplicaciones) */
+        #menu {
+            display: flex;
+            justify-content: center;
+            background-color: #007bff;
+        }
+
+        #menu button {
+            background-color: transparent;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #menu button.active {
+            background-color: #0056b3;
+        }
+
+        /* Contenedor de juegos y aplicaciones */
+        #contenido {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        /* Estilo para las tarjetas de aplicaciones y juegos */
+        .item-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Cursor apuntando al pasar el ratón */
+            transition: transform 0.2s; /* Agregamos una transición de transformación de 0.2 segundos */
+        }
+
+        .item-card:hover {
+            transform: scale(1.05); /* Aumenta el tamaño al pasar el ratón */
+        }
+
+        .item-image {
+            width: 80px;
+            height: auto;
+            float: left;
+            margin: 10px;
+        }
+
+        .item-details {
+            margin-left: 100px;
+        }
+
+        .item-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: black;
+        }
+
+        .item-company {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        /* Estilos para la barra de búsqueda avanzada */
+        #busqueda-avanzada {
+            text-align: center;
+            margin: 20px;
+        }
+
+        #busqueda-avanzada input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        #busqueda-avanzada input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        /* Estilo para el mensaje de resultados vacíos */
+        #sin-resultados {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a MKT MODS</h1>
+
+    <!-- Menú de selección (Juegos / Aplicaciones) -->
+    <div id="menu">
+        <button id="btnJuegos" class="active">Juegos</button>
+        <button id="btnAplicaciones">Aplicaciones</button>
+    </div>
+
+    <!-- Barra de búsqueda avanzada -->
+    <div id="busqueda-avanzada">
+        <input type="text" id="busqueda" placeholder="Buscar...">
+    </div>
+
+    <!-- Contenedor de juegos y aplicaciones -->
+    <div id="contenido"></div>
+
+    <!-- Mensaje de resultados vacíos -->
+    <div id="sin-resultados" style="display: none;">No se encontraron resultados, asegúrate de que sea un juego o app.</div>
+
+    <!-- JavaScript para mostrar juegos y aplicaciones y búsqueda avanzada -->
+    <script>
+        const contenido = document.getElementById("contenido");
+        const btnJuegos = document.getElementById("btnJuegos");
+        const btnAplicaciones = document.getElementById("btnAplicaciones");
+        const mensajeSinResultados = document.getElementById("sin-resultados");
+
+        // Datos de juegos ficticios (imagen, nombre, compañía, URL y versión de dispositivo)
+        const juegos = [
+    {
+        nombre: "IDLE BAKN",
+        company: "MKT MODS(STUDIOS)",
+        url: "app1.html",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcsxC_VXtscUmnrHAX2R48YaPBjYxkcuMPA&usqp=CAU",
+        version: "1.0"
+    },
+    {
+        nombre: "MINECRAFT",
+        company: "MKT MODS(STUDIOS)",
+        url: "app4.html",
+        imagen: "https://play-lh.googleusercontent.com/VSwHQjcAttxsLE47RuS4PqpC4LT7lCoSjE7Hx5AW_yCxtDvcnsHHvm5CTuL5BPN-uRTP",
+        version: "1.2"
+    },
+    {
+        nombre: "TOLBOX",
+        company: "MKT MODS(STUDIOS)",
+        url: "app5.html",
+        imagen: "https://play-lh.googleusercontent.com/RK32O-Xb5_aKUJlNf5Ka0vrk6Xpq2vP_FO-oje1wiCyzT2hXMlNrmNyIn7w7YHPSvxOT",
+        version: "2.0"
+    },
+    {
+        nombre: "APK EDITOR PRO",
+        company: "MKT MODS(STUDIOS)",
+        url: "app2.html",
+        imagen: "https://play-lh.googleusercontent.com/3tYyMzcCzEJw4gGRg728lhdP4BNQD_rGloiaz9YFv3Re4uEyU8GaFD51emKRbwbGFw",
+        version: "1.5"
+    },
+    {
+        nombre: "Juego 5",
+        company: "Compañía Juego 5",
+        url: "",
+        imagen: "juego5.png",
+        version: "2.1"
+    },
+    {
+        nombre: "Juego 6",
+        company: "Compañía Juego 6",
+        url: "https://ejemplo.com/juego6",
+        imagen: "juego6.png",
+        version: "1.0"
+    },
+    {
+        nombre: "Juego 7",
+        company: "Compañía Juego 7",
+        url: "https://ejemplo.com/juego7",
+        imagen: "juego7.png",
+        version: "1.0"
+    },
+    {
+        nombre: "Juego 8",
+        company: "Compañía Juego 8",
+        url: "https://ejemplo.com/juego8",
+        imagen: "juego8.png",
+        version: "1.0"
+    },
+    {
+        nombre: "Juego 9",
+        company: "Compañía Juego 9",
+        url: "https://ejemplo.com/juego9",
+        imagen: "juego9.png",
+        version: "1.0"
+    },
+    {
+        nombre: "Juego 10",
+        company: "Compañía Juego 10",
+        url: "https://ejemplo.com/juego10",
+        imagen: "juego10.png",
+        version: "1.0"
+    },
+];
+
+        // Datos de aplicaciones ficticias (imagen, nombre, compañía, URL y versión de dispositivo)
+        const aplicaciones = [
+            {
+                nombre: "MAGIS TV TELEFONO",
+                company: "MKR MODS(STIDIO)",
+                url: "app3.html",
+                imagen: "https://magistv.live/wp-content/uploads/2022/08/MagisTV.jpg",
+                version: "1.0"
+            },
+             {
+                nombre: "MAGIS TV SMART TV",
+                company: "MKR MODS(STIDIO)",
+                url: "app3.html",
+                imagen: "https://magistv.live/wp-content/uploads/2022/08/MagisTV.jpg",
+                version: "1.0"
+            },
+             {
+                nombre: "sbgamehacker",
+                company: "MKR MODS(STIDIO)",
+                url: "app8.html",
+                imagen: "https://play-lh.googleusercontent.com/1rb-QaDcMDwOFIUCW_7-poVaBH1ggsY-A8wB0WzAodYABU5YF_sjnePUNVZK6S0KgKSw",
+                version: "1.0"
+            },
+            
+ 
+            // Añade más aplicaciones aquí manualmente
+            // ...
+        ];
+
+        // Función para mostrar contenido
+        function mostrarContenido(contenidoArray) {
+            contenido.innerHTML = ""; // Limpia el contenido existente
+
+            if (contenidoArray.length === 0) {
+                mensajeSinResultados.style.display = "block"; // Mostrar mensaje de resultados vacíos
+            } else {
+                mensajeSinResultados.style.display = "none"; // Ocultar mensaje de resultados vacíos
+            }
+
+            contenidoArray.forEach(item => {
+                const itemCard = document.createElement("div");
+                itemCard.className = "item-card";
+                itemCard.innerHTML = `
+                    <a href="${item.url}">
+                        <img src="${item.imagen}" alt="${item.nombre}" class="item-image">
+                        <div class="item-details">
+                            <div class="item-name">${item.nombre}</div>
+                            <div class="item-company">${item.company}</div>
+                            <div class="item-device-version">Versión del Dispositivo: ${item.version}</div>
+                        </div>
+                    </a>
+                `;
+
+                contenido.appendChild(itemCard);
+            });
+        }
+
+        btnJuegos.addEventListener("click", () => {
+            btnJuegos.classList.add("active");
+            btnAplicaciones.classList.remove("active");
+
+            mostrarContenido(juegos);
+        });
+
+        btnAplicaciones.addEventListener("click",() => {
+            btnAplicaciones.classList.add("active");
+            btnJuegos.classList.remove("active");
+
+            mostrarContenido(aplicaciones);
+        });
+
+        // Inicialmente, muestra juegos
+        btnJuegos.click();
+
+        // Agregar función de búsqueda avanzada
+        const busquedaInput = document.getElementById("busqueda");
+        busquedaInput.addEventListener("input", () => {
+            const searchTerm = busquedaInput.value.toLowerCase();
+
+            // Filtrar juegos o aplicaciones según el término de búsqueda
+            if (btnJuegos.classList.contains("active")) {
+                const juegosFiltrados = juegos.filter(juego => juego.nombre.toLowerCase().includes(searchTerm));
+                mostrarContenido(juegosFiltrados);
+            } else {
+                const aplicacionesFiltradas = aplicaciones.filter(app => app.nombre.toLowerCase().includes(searchTerm));
+                mostrarContenido(aplicacionesFiltradas);
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Donaciones</title>
+    <style>
+        /* Estilos CSS personalizados aquí */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenido del formulario y otros elementos -->
+
+    <div class="copyright">
+        © 2023 MKT MODS. Todos los derechos reservados.
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Información al Soporte</title>
+    <style>
+        /* Estilo para el ícono de engranaje en la esquina superior derecha */
+        .gear-icon {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Estilo para el menú de soporte */
+        .support-menu {
+            display: none;
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            z-index: 999; /* Asegura que esté por encima del contenido */
+        }
+
+        .support-menu a {
+            display: block;
+            text-decoration: none;
+            margin: 10px 0;
+            color: #0070c0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Agrega el ícono de engranaje en la esquina superior derecha -->
+    <span class="gear-icon" id="gearIcon">&#9881;</span>
+
+    <!-- Agrega el menú de soporte -->
+    <div class="support-menu" id="supportMenu">
+        <a href="https://wa.me/59175324192?text=Hola,%20necesito%20soporte%20por%20favor">Abrir WhatsApp</a>
+        <a href="mailto:protuction.mkt@gmail.com?subject=Mensaje%20MKT%C3%MODS(PRODUCTION)&body=Hola,%20necesito%20ayuda%20con%20la%20web.">Enviar Correo Electrónico</a>
+    </div>
+
+    <script>
+        // Agrega eventos para mostrar y ocultar el menú de soporte
+        var gearIcon = document.getElementById("gearIcon");
+        var supportMenu = document.getElementById("supportMenu");
+
+        gearIcon.addEventListener("click", function() {
+            if (supportMenu.style.display === "none" || supportMenu.style.display === "") {
+                supportMenu.style.display = "block";
+            } else {
+                supportMenu.style.display = "none";
+            }
+        });
+
+        document.addEventListener("click", function(event) {
+            if (event.target !== gearIcon && event.target !== supportMenu) {
+                supportMenu.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

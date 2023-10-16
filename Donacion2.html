@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Donaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+            margin: 0; /* Elimina el margen predeterminado en dispositivos móviles */
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px; /* Tamaño de fuente más grande para móviles */
+        }
+
+        p {
+            color: #666;
+            font-size: 16px; /* Tamaño de fuente más grande para móviles */
+            margin: 10px 0; /* Agregado para separar los párrafos en dispositivos móviles */
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>¡Apoya nuestra causa!</h1>
+    <p>Tu generosidad nos ayuda a seguir adelante. ¡Gracias por tu donación!</p>
+
+    <a href="donacion.html" target="_blank">
+        <button>Donar con Seguridad</button>
+    </a>
+
+    <p>Descripción de nuestra causa o información adicional.</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Donaciones</title>
+    <style>
+        /* Estilos CSS personalizados aquí */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenido del formulario y otros elementos -->
+
+    <div class="copyright">
+        © 2023 MKT MODS. Todos los derechos reservados.
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Información al Soporte</title>
+    <style>
+        /* Estilo para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Estilo para el contenido del modal */
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        /* Estilo para el botón de cierre */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Estilo para la imagen del enlace */
+        .info-image {
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            max-width: 20%; /* Ajusta el tamaño de la imagen */
+        }
+
+        /* Estilo para los enlaces de Gmail y teléfono */
+        .contact-link {
+            text-decoration: none;
+            color: #0070c0;
+            font-weight: bold;
+        }
+
+        /* Estilo para la imagen en el lado derecho del contenido del modal */
+        .modal-image {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Información al Soporte</h1>
+    <p>Haz clic en la siguiente imagen para mostrar la información de soporte:</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/2593/2593341.png" alt="Mostrar Información de Soporte" class="info-image">
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="cerrarModal">&times;</span>
+            <h2>Información de Soporte</h2>
+            <p>Horario de soporte: 24/7</p>
+            <a class="contact-link" href="https://wa.me/59175324192?text=Hola,%20necesito%20soporte%20por%20favor">Abrir WhatsApp</a>
+            <a class="contact-link" href="mailto:protuction.mkt@gmail.com?subject=Mensaje%20MKT%C3%MODS(PRODUCTION)&body=Hola,%20nesito%20es%20un%20ayuda%20con%C3%A1la%20web.">Enviar Correo Electrónico</a>
+            <img src="imagen.jpg" alt="Imagen de soporte" class="modal-image">
+        </div>
+    </div>
+
+    <script>
+        document.querySelector(".info-image").addEventListener("click", function() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "block";
+        });
+
+        document.getElementById("cerrarModal").addEventListener("click", function() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        });
+    </script>
+</body>
+</html>
